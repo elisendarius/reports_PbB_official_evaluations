@@ -13,7 +13,7 @@
 
 <meta name="date" content="2026-02-25" />
 
-<title>NAV Purebred Beef Genetic Evaluation Report (SIMULATED)</title>
+<title>NAV Purebred Beef Genetic Evaluation Report</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,8 +350,8 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">NAV Purebred Beef Genetic Evaluation Report
-(SIMULATED)</h1>
+<h1 class="title toc-ignore">NAV Purebred Beef Genetic Evaluation
+Report</h1>
 <h4 class="author">Elisenda Rius-Vilarrasa (Växa)</h4>
 <h4 class="date">2026-02-25</h4>
 
@@ -359,54 +359,135 @@ display: none;
 
 <div id="TOC">
 <ul>
-<li><a href="#windows-only-safe-on-linuxhpc" id="toc-windows-only-safe-on-linuxhpc">Windows-only; safe on
-Linux/HPC</a></li>
-<li><a href="#page-break-helper-html-gets-a-div-pdf-gets--" id="toc-page-break-helper-html-gets-a-div-pdf-gets--">—- Page break
-helper: HTML gets a div, PDF gets —-</a></li>
-<li><a href="#paths-adjust-only-these-if-needed--" id="toc-paths-adjust-only-these-if-needed--">—- Paths (adjust only these
-if needed) —-</a></li>
+<li><a href="#section" id="toc-section">============================================================</a></li>
+<li><a href="#nav-purebred-beef-genetic-evaluation" id="toc-nav-purebred-beef-genetic-evaluation">NAV Purebred Beef genetic
+evaluation</a></li>
+<li><a href="#genomic-evaluation-for-weightgrowth-and-carcass-traits" id="toc-genomic-evaluation-for-weightgrowth-and-carcass-traits">Genomic
+evaluation for weight/growth and carcass traits</a></li>
+<li><a href="#author-elisenda-rius-vilarrasa-växa" id="toc-author-elisenda-rius-vilarrasa-växa">Author: Elisenda
+Rius-Vilarrasa (Växa)</a></li>
+<li><a href="#date-sys.date" id="toc-date-sys.date">Date:
+Sys.Date()</a></li>
+<li><a href="#section-1" id="toc-section-1">============================================================</a></li>
+<li><a href="#setup--" id="toc-setup--">—- Setup —-</a></li>
+<li><a href="#set-memory-limit-windows" id="toc-set-memory-limit-windows">Set memory limit (Windows)</a></li>
+<li><a href="#load-data--" id="toc-load-data--">—- Load data —-</a></li>
+<li><a href="#define-traits-and-breeds--" id="toc-define-traits-and-breeds--">—- Define traits and breeds
+—-</a></li>
+<li><a href="#trait-names--" id="toc-trait-names--">—- Trait names
+—-</a></li>
+<li><a href="#rename-function--" id="toc-rename-function--">—- Rename
+function —-</a></li>
+<li><a href="#breed-colors--" id="toc-breed-colors--">—- Breed colors
+—-</a></li>
+<li><a href="#load-processed-data--" id="toc-load-processed-data--">—-
+Load processed data —-</a></li>
+<li><a href="#prepare-variables--" id="toc-prepare-variables--">—-
+Prepare variables —-</a></li>
+<li><a href="#section-2" id="toc-section-2">============================================================</a></li>
+<li><a href="#analysis-sections-start-here" id="toc-analysis-sections-start-here">Analysis sections start
+here</a></li>
+<li><a href="#section-3" id="toc-section-3">============================================================</a></li>
+<li><a href="#section-number-of-genotypes-by-breed-and-country-added-to-the-june-2025-evaluation" id="toc-section-number-of-genotypes-by-breed-and-country-added-to-the-june-2025-evaluation">Section:
+Number of genotypes by breed and country added to the June 2025
+evaluation</a></li>
+<li><a href="#section-4" id="toc-section-4">============================================================</a></li>
+<li><a href="#additional-plots-genotype-trends-calving-evaluation-carcass-evaluation-etc." id="toc-additional-plots-genotype-trends-calving-evaluation-carcass-evaluation-etc.">Additional
+plots (genotype trends, calving evaluation, carcass evaluation,
+etc.)</a></li>
+<li><a href="#section-5" id="toc-section-5">============================================================</a></li>
+<li><a href="#load-the-saved-dataset" id="toc-load-the-saved-dataset">Load the saved dataset</a></li>
+<li><a href="#extract-birth-year-column-5-is-assumed-to-be-the-birth-year" id="toc-extract-birth-year-column-5-is-assumed-to-be-the-birth-year">Extract
+birth year (column 5 is assumed to be the birth year)</a></li>
+<li><a href="#aggregate-the-data-to-count-the-number-of-animals-by-breed-and-birth-year" id="toc-aggregate-the-data-to-count-the-number-of-animals-by-breed-and-birth-year">Aggregate
+the data to count the number of animals by breed and birth year</a></li>
+<li><a href="#plotting-the-data-using-geom_line" id="toc-plotting-the-data-using-geom_line">Plotting the data using
+geom_line</a></li>
+<li><a href="#save-the-plot-as-a-png-file" id="toc-save-the-plot-as-a-png-file">Save the plot as a PNG
+file</a></li>
+<li><a href="#save-plot-per-breed--" id="toc-save-plot-per-breed--">—-
+Save plot per breed —-</a></li>
+<li><a href="#save-plot-per-breed---1" id="toc-save-plot-per-breed---1">—- Save plot per breed —-</a></li>
+<li><a href="#save-plot-per-breed---2" id="toc-save-plot-per-breed---2">—- Save plot per breed —-</a></li>
+<li><a href="#carcass" id="toc-carcass">Carcass</a>
+<ul>
+<li><a href="#correlations-between-previous-and-current-evaluation-for-the-subindex-traits-for-publishable-animals-from-the-weightgrowth-evaluation" id="toc-correlations-between-previous-and-current-evaluation-for-the-subindex-traits-for-publishable-animals-from-the-weightgrowth-evaluation">Correlations
+between previous and current evaluation for the subindex traits for
+publishable animals from the weight/growth evaluation</a></li>
+</ul></li>
+<li><a href="#dtcorr.clv--corr_clvn10-trait-in-call.idx.clv-byear1999" id="toc-dtcorr.clv--corr_clvn10-trait-in-call.idx.clv-byear1999">dtcorr.clv
+&lt;-corr_clv[N&gt;10 &amp; trait %in% c(all.idx.clv) &amp;
+byear&gt;1999]</a></li>
+<li><a href="#dtcorr.clv-dtcorr.clvidxcalv" id="toc-dtcorr.clv-dtcorr.clvidxcalv">dtcorr.clv&lt;-dtcorr.clv[,idx:=‘CALV’]</a></li>
+<li><a href="#reshape-the-dataset-with-coun-and-geno-as-multiple-column-layers" id="toc-reshape-the-dataset-with-coun-and-geno-as-multiple-column-layers">Reshape
+the dataset with ‘coun’ and ‘geno’ as multiple column layers</a></li>
+<li><a href="#display-the-reshaped-table-as-a-static-table" id="toc-display-the-reshaped-table-as-a-static-table">Display the
+reshaped table as a static table</a></li>
+<li><a href="#reshape-the-dataset-with-coun-and-geno-as-multiple-column-layers-1" id="toc-reshape-the-dataset-with-coun-and-geno-as-multiple-column-layers-1">Reshape
+the dataset with ‘coun’ and ‘geno’ as multiple column layers</a></li>
+<li><a href="#save-plot-per-breed---3" id="toc-save-plot-per-breed---3">—- Save plot per breed —-</a>
+<ul>
+<li><a href="#genetic-trends-and-standard-deviation-of-bv-from-the-previous-ebv.p-and-current-ebv.l" id="toc-genetic-trends-and-standard-deviation-of-bv-from-the-previous-ebv.p-and-current-ebv.l">Genetic
+trends and standard deviation of BV from the previous (ebv.p) and
+current (ebv.l)</a></li>
+</ul></li>
+<li><a href="#save-plot-per-breed---4" id="toc-save-plot-per-breed---4">—- Save plot per breed —-</a></li>
+<li><a href="#save-plot-per-breed---5" id="toc-save-plot-per-breed---5">—- Save plot per breed —-</a></li>
 </ul>
 </div>
 
-<p>suppressPackageStartupMessages({ library(magrittr) library(dplyr)
-library(data.table) library(reshape2) library(ggplot2) library(tidyr)
-library(knitr) library(flextable) library(kableExtra) library(gridExtra)
-library(ggforce) library(haven) library(scales) })</p>
-<div id="windows-only-safe-on-linuxhpc" class="section level1">
-<h1>Windows-only; safe on Linux/HPC</h1>
-<p>if (.Platform$OS.type == “windows”) memory.limit(size = 8000)</p>
+<div id="section" class="section level1">
+<h1>============================================================</h1>
 </div>
-<div id="page-break-helper-html-gets-a-div-pdf-gets--" class="section level1">
-<h1>—- Page break helper: HTML gets a div, PDF gets —-</h1>
-page_break &lt;- function() { if (knitr::is_latex_output()) {
-cat(“\newpage”) } else { cat(’
-<div style="page-break-after: always;">
-
+<div id="nav-purebred-beef-genetic-evaluation" class="section level1">
+<h1>NAV Purebred Beef genetic evaluation</h1>
 </div>
-<p>’) } }</p>
+<div id="genomic-evaluation-for-weightgrowth-and-carcass-traits" class="section level1">
+<h1>Genomic evaluation for weight/growth and carcass traits</h1>
 </div>
-<div id="paths-adjust-only-these-if-needed--" class="section level1">
-<h1>—- Paths (adjust only these if needed) —-</h1>
-<p>fn_results_primary &lt;- “../results_primary.RData” # adjust if
-needed fn_dat02_rdata &lt;- “dat02.RData” # adjust if needed</p>
-<p>fn_prev_sas &lt;-
-“../../../Previous/GENO/datasets/filtered_genotyped_animals.sas7bdat”
-fn_curr_sas &lt;-
-“../../GENO/datasets/filtered_genotyped_animals.sas7bdat”</p>
-<p>load(fn_results_primary) # creates results_primary
-setDT(results_primary)</p>
+<div id="author-elisenda-rius-vilarrasa-växa" class="section level1">
+<h1>Author: Elisenda Rius-Vilarrasa (Växa)</h1>
+</div>
+<div id="date-sys.date" class="section level1">
+<h1>Date: Sys.Date()</h1>
+</div>
+<div id="section-1" class="section level1">
+<h1>============================================================</h1>
+</div>
+<div id="setup--" class="section level1">
+<h1>—- Setup —-</h1>
+<p>knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+fig.height = 6, fig.width = 7.5, dpi = 500, cache = FALSE)</p>
+<p>library(magrittr) library(dplyr) library(data.table)
+library(reshape2) library(ggplot2) library(tidyr) library(knitr)
+library(flextable) library(kableExtra) library(gridExtra)
+library(ggforce) library(haven) library(scales)</p>
+</div>
+<div id="set-memory-limit-windows" class="section level1">
+<h1>Set memory limit (Windows)</h1>
+<p>memory.limit(size = 8000)</p>
+</div>
+<div id="load-data--" class="section level1">
+<h1>—- Load data —-</h1>
+<p>load(“../results_primary.RData”) setDT(results_primary)</p>
+</div>
+<div id="define-traits-and-breeds--" class="section level1">
+<h1>—- Define traits and breeds —-</h1>
 <p>brdl &lt;- c(“AAN”,“CHA”,“HER”,“LIM”,“SIM”)</p>
-<p>all.trt &lt;-
-c(‘mbw1’,‘dbw1’,‘mcae1’,‘dcae1’,‘msb1’,‘dsb1’,‘mbw2’,‘dbw2’,‘mcae2’,‘dcae2’,‘msb2’,‘dsb2’,
-‘cal’,‘bir’,‘dam’,‘mbwtI’,‘mcaeI’,‘msbI’,‘dbwtI’,‘dcaeI’,‘dsbI’,
-‘mbw’,‘dbw’,‘mwg’,‘dwg’,‘myw’,‘dyw’,‘pwg’,‘sdg’,‘cco’,‘cfa’,‘gro’,‘slq’,‘pro’)</p>
-<p>all.clv &lt;-
-c(‘mbw1’,‘dbw1’,‘mcae1’,‘dcae1’,‘msb1’,‘dsb1’,‘mbw2’,‘dbw2’,‘mcae2’,‘dcae2’,‘msb2’,‘dsb2’,
-‘cal’,‘bir’,‘dam’,‘mbwtI’,‘mcaeI’,‘msbI’,‘dbwtI’,‘dcaeI’,‘dsbI’)</p>
-<p>all.crc &lt;-
-c(‘mbw’,‘dbw’,‘mwg’,‘dwg’,‘myw’,‘dyw’,‘pwg’,‘sdg’,‘cco’,‘cfa’,‘gro’,‘slq’,‘pro’)</p>
-<p>all.idx &lt;- c(‘cal’,‘bir’,‘dam’,‘gro’,‘slq’,‘pro’) all.idx.clv
-&lt;- c(‘cal’,‘bir’,‘dam’) all.idx.crc &lt;- c(‘gro’,‘slq’,‘pro’)</p>
+<p>all.trt &lt;- c(‘mbw1’, ‘dbw1’,
+‘mcae1’,‘dcae1’,‘msb1’,‘dsb1’,‘mbw2’,‘dbw2’,‘mcae2’,
+‘dcae2’,‘msb2’,‘dsb2’,‘cal’,‘bir’,‘dam’,‘mbwtI’,‘mcaeI’,‘msbI’,
+‘dbwtI’,‘dcaeI’,‘dsbI’,‘mbw’,‘dbw’,‘mwg’,‘dwg’,‘myw’,‘dyw’,
+‘pwg’,‘sdg’,‘cco’,‘cfa’,‘gro’,‘slq’,‘pro’) all.clv &lt;- c(‘mbw1’,
+‘dbw1’, ‘mcae1’,‘dcae1’,‘msb1’,‘dsb1’,‘mbw2’,‘dbw2’,
+‘mcae2’,‘dcae2’,‘msb2’,‘dsb2’,‘cal’,‘bir’,‘dam’,
+‘mbwtI’,‘mcaeI’,‘msbI’,‘dbwtI’,‘dcaeI’,‘dsbI’) all.crc &lt;-
+c(‘mbw’,‘dbw’,‘mwg’,‘dwg’,‘myw’,‘dyw’,‘pwg’,‘sdg’,‘cco’,‘cfa’,‘gro’,‘slq’,‘pro’)
+all.idx &lt;- c(‘cal’,‘bir’,‘dam’,‘gro’,‘slq’,‘pro’) all.idx.clv &lt;-
+c(‘cal’,‘bir’,‘dam’) all.idx.crc &lt;- c(‘gro’,‘slq’,‘pro’)</p>
+</div>
+<div id="trait-names--" class="section level1">
+<h1>—- Trait names —-</h1>
 <p>abbr.names &lt;- read.table(header=TRUE, text=” trait Trait_name mbw
 ‘Birth weight - maternal’ dbw ‘Birth weight - direct’ mbw1 ‘Birth weight
 - maternal, 1st. calv.’ mbw2 ‘Birth weight - maternal, 2+ calv.’ dbw1
@@ -422,8 +503,334 @@ weight gain’ sdg ‘Carcass daily gain’ cco ‘Carcass conformation score’
 cfa ‘Carcass fat score’ cal ‘Calving index’ bir ‘Birth index’ dam ‘Dam
 index’ gro ‘Growth index’ slq ‘Slaughter quality index’ pro ‘Production
 index’ “)</p>
+</div>
+<div id="rename-function--" class="section level1">
+<h1>—- Rename function —-</h1>
+<p>rename &lt;- function(x, z){ oldnames &lt;- names(x[,1:length(x)]) x
+%&gt;% rename_at(all_of(oldnames), ~ abbr.names) -&gt; dt return(dt)
+}</p>
+</div>
+<div id="breed-colors--" class="section level1">
+<h1>—- Breed colors —-</h1>
 <p>breed_colors &lt;- c( “AAN” = “#264653”, “CHA” = “#2A9D8F”, “HER” =
 “#E9C46A”, “LIM” = “#F4A261”, “SIM” = “#E76F51” )</p>
+</div>
+<div id="load-processed-data--" class="section level1">
+<h1>—- Load processed data —-</h1>
+<p>dat02&lt;-merge(results_primary[byear&gt;2014],abbr.names,by=“trait”)</p>
+</div>
+<div id="prepare-variables--" class="section level1">
+<h1>—- Prepare variables —-</h1>
+<p>dat02 &lt;- dat02 %&gt;% mutate( idx_carc = trimws(idx_carc), geno =
+ifelse(!is.na(idx_carc) &amp; idx_carc == “NAV G”, “NAV G”, “-”) )
+%&gt;% add_count(brd, trait, geno, grp, byear, name = “count”)</p>
+</div>
+<div id="section-2" class="section level1">
+<h1>============================================================</h1>
+</div>
+<div id="analysis-sections-start-here" class="section level1">
+<h1>Analysis sections start here</h1>
+</div>
+<div id="section-3" class="section level1">
+<h1>============================================================</h1>
+</div>
+<div id="section-number-of-genotypes-by-breed-and-country-added-to-the-june-2025-evaluation" class="section level1">
+<h1>Section: Number of genotypes by breed and country added to the June
+2025 evaluation</h1>
+<p>previous_sas_data &lt;-
+read_sas(“../../Previous/GENO/datasets/filtered_genotyped_animals.sas7bdat”)
+previous_sas_data<span class="math inline">\(coun &lt;-
+substr(previous_sas_data\)</span>id_nor, 4, 6) previous_sas_data<span class="math inline">\(coun &lt;- ifelse(previous_sas_data\)</span>coun
+%in% c(“DNK”,“FIN”,“SWE”), previous_sas_data<span class="math inline">\(coun, &quot;Other&quot;)
+previous_sas_data\)</span>coun &lt;- factor(previous_sas_data$coun,
+levels = c(“DNK”,“FIN”,“SWE”,“Other”))</p>
+<p>previous_breed_coun_table_df &lt;-
+as.data.frame(table(previous_sas_data<span class="math inline">\(ebreed,
+previous_sas_data\)</span>coun)) colnames(previous_breed_coun_table_df)
+&lt;- c(“Breed”, “Country”, “Previous_Count”)</p>
+<p>sas_data &lt;-
+read_sas(“../../Lastrun/GENO/datasets/filtered_genotyped_animals.sas7bdat”)
+sas_data<span class="math inline">\(coun &lt;-
+substr(sas_data\)</span>id_nor, 4, 6) sas_data<span class="math inline">\(coun &lt;- ifelse(sas_data\)</span>coun %in%
+c(“DNK”,“FIN”,“SWE”), sas_data<span class="math inline">\(coun,
+&quot;Other&quot;) sas_data\)</span>coun &lt;- factor(sas_data<span class="math inline">\(coun, levels =
+c(&quot;DNK&quot;,&quot;FIN&quot;,&quot;SWE&quot;,&quot;Other&quot;))
+breed_coun_table_df &lt;- as.data.frame(table(sas_data\)</span>ebreed,
+sas_data$coun)) colnames(breed_coun_table_df) &lt;- c(“Breed”,
+“Country”, “Count”)</p>
+<p>comparison_df &lt;- merge(breed_coun_table_df,
+previous_breed_coun_table_df, by=c(“Breed”,“Country”), all.x=TRUE)
+comparison_df<span class="math inline">\(Extra_Count &lt;-
+comparison_df\)</span>Count - comparison_df$Previous_Count</p>
+<p>extra_geno &lt;- ggplot(comparison_df, aes(x=Country, y=Extra_Count,
+fill=Breed)) + geom_bar(stat=“identity”,
+position=position_dodge(width=0.9), width=0.8) +
+geom_text(aes(label=Extra_Count), position=position_dodge(width=0.9),
+vjust=-0.5, size=3) + scale_fill_manual(values=breed_colors) +
+labs(x=“Country”, y=“Extra Number of Genotyped Animals”) +
+theme_minimal(base_size=16) ggsave(“extra_geno.png”, plot=extra_geno,
+width=8.27, height=8.69, dpi=300) print(extra_geno)</p>
+</div>
+<div id="section-4" class="section level1">
+<h1>============================================================</h1>
+</div>
+<div id="additional-plots-genotype-trends-calving-evaluation-carcass-evaluation-etc." class="section level1">
+<h1>Additional plots (genotype trends, calving evaluation, carcass
+evaluation, etc.)</h1>
+</div>
+<div id="section-5" class="section level1">
+<h1>============================================================</h1>
+</div>
+<div id="load-the-saved-dataset" class="section level1">
+<h1>Load the saved dataset</h1>
+<p>load(“merged_data_all_breeds.RData”)</p>
+<p>setDT(merged_data_all_breeds)</p>
+</div>
+<div id="extract-birth-year-column-5-is-assumed-to-be-the-birth-year" class="section level1">
+<h1>Extract birth year (column 5 is assumed to be the birth year)</h1>
+<p>colnames(merged_data_all_breeds)[5] &lt;- “birth_year”</p>
+</div>
+<div id="aggregate-the-data-to-count-the-number-of-animals-by-breed-and-birth-year" class="section level1">
+<h1>Aggregate the data to count the number of animals by breed and birth
+year</h1>
+<p>animal_count_by_breed_year &lt;-
+merged_data_all_breeds[birth_year&gt;2004] %&gt;% group_by(breed,
+birth_year) %&gt;% summarise(animal_count = n()) %&gt;% ungroup()</p>
+</div>
+<div id="plotting-the-data-using-geom_line" class="section level1">
+<h1>Plotting the data using geom_line</h1>
+<p>plot&lt;-ggplot(animal_count_by_breed_year, aes(x = birth_year, y =
+animal_count, color = breed, group = breed)) + geom_line(size = 2) + #
+Line size to make the plot more visible geom_point(size = 1) + #
+Optional: add points to highlight each year labs(title = “Number of
+genotyed animals by breed and birth Year”, x = “Birth year”, y =
+“Animals with genotypes”) + scale_color_manual(values = breed_colors) +
+#theme_minimal() + #scale_color_brewer(palette = “Set1”) + # Color
+palette for breed lines<br />
+# Control x-axis and y-axis limits scale_x_continuous(limits = c(2005,
+2025), breaks = seq(2005, 2025, by = 2)) + # Set x-axis limits from 1990
+to 2020 # Set y-axis limits with 500-unit jumps
+scale_y_continuous(limits = c(0, 2000), breaks = seq(0, 2000, by =
+500))+ # Y-axis from 0 to 3000 with 500 jumps # Place the legend at the
+bottom theme(legend.position = “bottom”, # Move legend to bottom
+legend.title = element_blank(), legend.text = element_text(size = 18), #
+Increase legend text size legend.key.size = unit(1.5, “cm”), # Increase
+the size of legend keys axis.text.x = element_text(angle = 0, hjust =
+0.5), axis.title = element_text(size = 18), # Increase axis titles size
+text = element_text(size = 20),<br />
+plot.title = element_text(size = 20, face = “bold”) # Increase plot
+title size ) # guides(color = guide_legend(nrow = 1)) # Arrange legend
+items in one row</p>
+</div>
+<div id="save-the-plot-as-a-png-file" class="section level1">
+<h1>Save the plot as a PNG file</h1>
+<p>ggsave(filename = “geno_by_year_results.png”, plot = plot, width = 6,
+height = 3, dpi = 500)</p>
+<p>for(b in brdl) {</p>
+<p>dat2&lt;-dat02[evalbreed==b &amp; byear&gt;2012]</p>
+<p># for idexes corr_clv &lt;- dat2[pub_calv==‘yes’,
+.(rbv.corr=cor(ebv.p,ebv.l),N=.N),
+by=c(“trait”,“Trait_name”,“byear”,“coun”)] #corr_crc &lt;-
+dat2[pub_carc==‘yes’, .(rbv.corr=cor(ebv.p,ebv.l),N=.N),
+by=c(“trait”,“Trait_name”,“byear”,“coun”)]</p>
+<p>dtcorr.clv &lt;-corr_clv[N&gt;10 &amp; trait %in% c(all.idx.clv)
+&amp; byear&gt;2012] dtcorr.clv&lt;-dtcorr.clv[,idx:=‘CALV’]</p>
+<p># dtcorr.crc &lt;-corr_crc[N&gt;10 &amp; trait %in% c(all.idx.crc)
+&amp; byear&gt;1999] # dtcorr.crc&lt;-dtcorr.crc[,idx:=‘CARC’]</p>
+<p>#dtcorr&lt;-rbind(dtcorr.clv,dtcorr.crc) dtcorr&lt;-dtcorr.clv
+dtcorr&lt;-dtcorr[order(byear)]</p>
+<p>g3 &lt;- ggplot(dtcorr, aes(x=byear,y=rbv.corr, group=Trait_name)) +
+geom_point(aes(colour=Trait_name)) + geom_line(aes(colour=Trait_name)) +
+xlab(“byear”) + ylab(“correlation”) + ggtitle(paste0(“corr(prev,last) -
+pub-animals (n&gt;10)::”,b,““))+ coord_cartesian(ylim=c(0.7,1))+ theme(
+axis.text.x = element_text(angle = 0, hjust = 0.5), # Rotate x-axis
+labels for readability text = element_text(size = 16), # General text
+size axis.title = element_text(size = 18), # Axis title size axis.text =
+element_text(size = 14), # Axis text size legend.title =
+element_text(size = 16), # Legend title size legend.text =
+element_text(size = 14), # Legend text size plot.title =
+element_text(size = 20, face =”bold”) # Bold and large plot title ) +
+facet_grid(coun~idx) + # Facet by index and country theme(panel.spacing
+= unit(1.0, “lines”)) # Increase space between facets</p>
+</div>
+<div id="save-plot-per-breed--" class="section level1">
+<h1>—- Save plot per breed —-</h1>
+<p>file_name &lt;- paste0(“CALV_corr_”, b, “.png”) ggsave(filename =
+file_name, plot = g3, width = 8, height = 4, dpi = 500)</p>
+<p>message(“Saved plot:”, file_name)</p>
+<p>}</p>
+<p>##gENETIC TRENDS</p>
+<p>for(b in brdl) {</p>
+<p>#data selection<br />
+dat2&lt;-dat02[evalbreed==b &amp; byear&gt;2012 &amp;
+pub_calv==‘yes’]</p>
+<p>gtmean&lt;-dat2[,lapply(.SD,mean,na.rm=TRUE),by=c(“coun”,“trait”,“Trait_name”,“byear”),.SDcols=c(“ebv.p”,“ebv.l”,“EBVdiff”)]
+gtmean&lt;-melt.data.table(gtmean[,EBVdiff:=NULL],id=c(“coun”,“trait”,“Trait_name”,“byear”),variable.name=“eval”)</p>
+<p>gtstd&lt;-dat2[,lapply(.SD,sd,na.rm=TRUE),by=c(“coun”,“trait”,“Trait_name”,“byear”),.SDcols=c(“ebv.p”,“ebv.l”,“EBVdiff”)]
+gtstd&lt;-
+melt.data.table(gtstd[,EBVdiff:=NULL],id=c(“coun”,“trait”,“Trait_name”,“byear”),variable.name=“eval”)</p>
+<p>gtmean1 &lt;- gtmean[order(byear,eval)]</p>
+<p>g2&lt;-ggplot(gtmean1[trait %in% c(all.idx.clv)],
+aes(x=byear,y=value,group =eval)) + # geom_line(aes(colour =
+eval),size=0.4)+ # xlab(“Year of birth”) + ylab(“mean EBV”) +
+ggtitle(paste0(“Mean - calving indexes ::”,b,““))+ theme( axis.text.x =
+element_text(angle = 90, hjust = 0.5), # Rotate x-axis labels for
+readability text = element_text(size = 16), # General text size
+axis.title = element_text(size = 18), # Axis title size axis.text =
+element_text(size = 14), # Axis text size legend.title =
+element_text(size = 16), # Legend title size legend.text =
+element_text(size = 14), # Legend text size plot.title =
+element_text(size = 20, face =”bold”) # Bold and large plot title ) +
+facet_grid(coun~Trait_name)</p>
+</div>
+<div id="save-plot-per-breed---1" class="section level1">
+<h1>—- Save plot per breed —-</h1>
+<p>file_name &lt;- paste0(“CALV_gtrends_”, b, “.png”) ggsave(filename =
+file_name, plot = g2, width = 8, height = 4, dpi = 500)</p>
+<p>message(“Saved plot:”, file_name)</p>
+<p>##STANDARD DEVIATIONS</p>
+<p>gtstd1&lt;-gtstd[order(byear,eval)]</p>
+<p>g4&lt;-ggplot(gtstd1[trait %in% c(all.idx.clv)],
+aes(x=byear,y=value,group =eval)) + # geom_line(aes(colour =
+eval),size=0.4)+ # xlab(“Year of birth”) + ylab(“std of rbv”) +
+ggtitle(paste0(“std - calving index ::”,b,““))+ theme( axis.text.x =
+element_text(angle = 90, hjust = 0.5), # Rotate x-axis labels for
+readability text = element_text(size = 18), # General text size
+axis.title = element_text(size = 18), # Axis title size axis.text =
+element_text(size = 18), # Axis text size legend.title =
+element_text(size = 16), # Legend title size legend.text =
+element_text(size = 18), # Legend text size plot.title =
+element_text(size = 20, face =”bold”) # Bold and large plot title ) +
+facet_grid(coun~Trait_name)</p>
+</div>
+<div id="save-plot-per-breed---2" class="section level1">
+<h1>—- Save plot per breed —-</h1>
+<p>file_name &lt;- paste0(“CALV_std_”, b, “.png”) ggsave(filename =
+file_name, plot = g4, width = 8, height = 4, dpi = 500)</p>
+<p>message(“Saved plot:”, file_name)</p>
+<p>}</p>
+</div>
+<div id="carcass" class="section level1">
+<h1>Carcass</h1>
+<div id="correlations-between-previous-and-current-evaluation-for-the-subindex-traits-for-publishable-animals-from-the-weightgrowth-evaluation" class="section level3">
+<h3>Correlations between previous and current evaluation for the
+subindex traits for publishable animals from the weight/growth
+evaluation</h3>
+<p>for(b in brdl) {</p>
+<p>dat2&lt;-dat02[evalbreed==b &amp; byear&gt;2012]</p>
+<p># for idexes corr_crc &lt;- dat2[pub_carc==‘yes’,
+.(rbv.corr=round(cor(ebv.p,ebv.l),2),N=.N),
+by=c(“trait”,“Trait_name”,“byear”,“coun”,“geno”)]</p>
+</div>
+</div>
+<div id="dtcorr.clv--corr_clvn10-trait-in-call.idx.clv-byear1999" class="section level1">
+<h1>dtcorr.clv &lt;-corr_clv[N&gt;10 &amp; trait %in% c(all.idx.clv)
+&amp; byear&gt;1999]</h1>
+</div>
+<div id="dtcorr.clv-dtcorr.clvidxcalv" class="section level1">
+<h1>dtcorr.clv&lt;-dtcorr.clv[,idx:=‘CALV’]</h1>
+<p>corr_crc_tb &lt;- dat2[pub_carc==‘yes’,
+.(rbv.corr=round(cor(ebv.p,ebv.l),2),N=.N),
+by=c(“trait”,“Trait_name”,“coun”,“geno”)]</p>
+<p>dtcorr.crc &lt;-corr_crc[N&gt;10 &amp; trait %in% c(all.idx.crc)
+&amp; byear&gt;2012] dtcorr.crc_tb &lt;-corr_crc_tb[N&gt;10 &amp; trait
+%in% c(all.idx.crc)]</p>
+<p>dtcorr.crc_tb2 &lt;-corr_crc_tb[N&gt;10 &amp; trait %in%
+c(all.crc)]</p>
+</div>
+<div id="reshape-the-dataset-with-coun-and-geno-as-multiple-column-layers" class="section level1">
+<h1>Reshape the dataset with ‘coun’ and ‘geno’ as multiple column
+layers</h1>
+<p>t_wide &lt;- dtcorr.crc_tb %&gt;% select(Trait_name, coun, rbv.corr,
+geno) %&gt;% # Keep relevant columns pivot_wider(names_from = c(coun,
+geno), values_from = rbv.corr) # Pivot both ‘coun’ and ‘geno’</p>
+</div>
+<div id="display-the-reshaped-table-as-a-static-table" class="section level1">
+<h1>Display the reshaped table as a static table</h1>
+<p>kable(t_wide, caption = paste0(“Correlation between old and new
+evaluation |”,b))</p>
+</div>
+<div id="reshape-the-dataset-with-coun-and-geno-as-multiple-column-layers-1" class="section level1">
+<h1>Reshape the dataset with ‘coun’ and ‘geno’ as multiple column
+layers</h1>
+<p>t_wide &lt;- dtcorr.crc_tb2 %&gt;% select(Trait_name, coun, rbv.corr,
+geno) %&gt;% # Keep relevant columns pivot_wider(names_from = c(coun,
+geno), values_from = rbv.corr) # Pivot both ‘coun’ and ‘geno’</p>
+<p>dtcorr.crc&lt;-dtcorr.crc[,idx:=‘CARC’]</p>
+<p>dtcorr&lt;-dtcorr.crc dtcorr&lt;-dtcorr[order(byear)]</p>
+<p>g3 &lt;- ggplot(dtcorr, aes(x=byear,y=rbv.corr, group=Trait_name)) +
+geom_point(aes(colour=Trait_name)) + geom_line(aes(colour=Trait_name)) +
+xlab(“byear”) + ylab(“correlation”) + ggtitle(paste0(“corr(prev,last) -
+pub-animals (n&gt;10)::”,b,““))+ coord_cartesian(ylim=c(0.7,1))+ theme(
+axis.text.x = element_text(angle = 90, hjust = 0.5),# Rotate x-axis
+labels for readability text = element_text(size = 16), # General text
+size axis.title = element_text(size = 18), # Axis title size axis.text =
+element_text(size = 14), # Axis text size legend.title =
+element_text(size = 16), # Legend title size legend.text =
+element_text(size = 14), # Legend text size plot.title =
+element_text(size = 20, face =”bold”),# Bold and large plot title
+legend.position = “bottom”, # Move legend to the bottom<br />
+panel.spacing = unit(1.1, “lines”)) +<br />
+facet_grid(coun~geno)</p>
+</div>
+<div id="save-plot-per-breed---3" class="section level1">
+<h1>—- Save plot per breed —-</h1>
+<p>file_name &lt;- paste0(“CARC_corr_”, b, “.png”) ggsave(filename =
+file_name, plot = g3, width = 8, height = 4, dpi = 500)</p>
+<p>message(“Saved plot:”, file_name)</p>
+<p>}</p>
+<div id="genetic-trends-and-standard-deviation-of-bv-from-the-previous-ebv.p-and-current-ebv.l" class="section level3">
+<h3>Genetic trends and standard deviation of BV from the previous
+(ebv.p) and current (ebv.l)</h3>
+<p>##gENETIC TRENDS</p>
+<p>for(b in brdl) {</p>
+<p>dat2&lt;-dat02[evalbreed==b &amp; byear&gt;2012 &amp;
+pub_carc==‘yes’]</p>
+<p>gtmean&lt;-dat2[,lapply(.SD,mean,na.rm=TRUE),by=c(“coun”,“trait”,“Trait_name”,“byear”),.SDcols=c(“ebv.p”,“ebv.l”,“EBVdiff”)]
+gtmean&lt;-melt.data.table(gtmean[,EBVdiff:=NULL],id=c(“coun”,“trait”,“Trait_name”,“byear”),variable.name=“eval”)</p>
+<p>gtstd&lt;-dat2[,lapply(.SD,sd,na.rm=TRUE),by=c(“coun”,“trait”,“Trait_name”,“byear”),.SDcols=c(“ebv.p”,“ebv.l”,“EBVdiff”)]
+gtstd&lt;-
+melt.data.table(gtstd[,EBVdiff:=NULL],id=c(“coun”,“trait”,“Trait_name”,“byear”),variable.name=“eval”)</p>
+<p>gtmean1 &lt;- gtmean[order(byear,eval)]</p>
+<p>g2&lt;-ggplot(gtmean1[trait %in% c(all.idx.crc)] ,
+aes(x=byear,y=value,group =eval)) + # geom_line(aes(colour =
+eval),size=0.4)+ # xlab(“Year of birth”) + ylab(“mean EBV”) +
+ggtitle(paste0(“Mean - carcass indexes ::”,b,““))+ theme( axis.text.x =
+element_text(angle = 90, hjust = 0.5), # Rotate x-axis labels for
+readability text = element_text(size = 16), # General text size
+axis.title = element_text(size = 18), # Axis title size axis.text =
+element_text(size = 14), # Axis text size legend.title =
+element_text(size = 16), # Legend title size legend.text =
+element_text(size = 14), # Legend text size plot.title =
+element_text(size = 20, face =”bold”) # Bold and large plot title ) +
+facet_grid(coun~Trait_name)</p>
+</div>
+</div>
+<div id="save-plot-per-breed---4" class="section level1">
+<h1>—- Save plot per breed —-</h1>
+<p>file_name &lt;- paste0(“CARC_gtrends_”, b, “.png”) ggsave(filename =
+file_name, plot = g2, width = 8, height = 4, dpi = 500)</p>
+<p>message(“Saved plot:”, file_name)</p>
+<p>##STANDARD DEVIATIONS gtstd1&lt;-gtstd[order(byear,eval)]</p>
+<p>g3&lt;-ggplot(gtstd1[trait %in% c(all.idx.crc)],
+aes(x=byear,y=value,group =eval)) + # geom_line(aes(colour =
+eval),size=0.4)+ # xlab(“Year of birth”) + ylab(“std of rbv”) +
+ggtitle(paste0(“std - carcass index ::”,b,““))+ theme( axis.text.x =
+element_text(angle = 90, hjust = 0.5), # Rotate x-axis labels for
+readability text = element_text(size = 16), # General text size
+axis.title = element_text(size = 18), # Axis title size axis.text =
+element_text(size = 14), # Axis text size legend.title =
+element_text(size = 16), # Legend title size legend.text =
+element_text(size = 14), # Legend text size plot.title =
+element_text(size = 20, face =”bold”) # Bold and large plot title ) +
+facet_grid(coun~Trait_name)</p>
+</div>
+<div id="save-plot-per-breed---5" class="section level1">
+<h1>—- Save plot per breed —-</h1>
+<p>file_name &lt;- paste0(“CARC_std_”, b, “.png”) ggsave(filename =
+file_name, plot = g3, width = 8, height = 4, dpi = 500)</p>
+<p>message(“Saved plot:”, file_name)</p>
+<p>}</p>
 </div>
 
 
