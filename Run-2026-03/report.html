@@ -357,29 +357,74 @@ display: none;
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#windows-only-safe-on-linuxhpc" id="toc-windows-only-safe-on-linuxhpc">Windows-only; safe on
+Linux/HPC</a></li>
+<li><a href="#page-break-helper-html-gets-a-div-pdf-gets--" id="toc-page-break-helper-html-gets-a-div-pdf-gets--">—- Page break
+helper: HTML gets a div, PDF gets —-</a></li>
+<li><a href="#paths-adjust-only-these-if-needed--" id="toc-paths-adjust-only-these-if-needed--">—- Paths (adjust only these
+if needed) —-</a></li>
+</ul>
+</div>
 
-<p>knitr::opts_chunk$set( echo = FALSE, message = FALSE, warning =
-FALSE, fig.width = 7, fig.height = 5, dpi = 300 )</p>
-<p>library(dplyr) library(ggplot2) library(knitr) set.seed(123)</p>
-<p>n &lt;- 5000</p>
-<p>breeds &lt;- c(“Angus”, “Charolais”, “Hereford”, “Limousin”,
-“Simmental”)</p>
-<p>data &lt;- tibble( animal_id = 1:n, breed = sample(breeds, n, replace
-= TRUE), birth_year = sample(2000:2024, n, replace = TRUE), genotyped =
-rbinom(n, 1, 0.6) )</p>
-<p>head(data) %&gt;% kable()</p>
-<p>animal_count_by_breed_year &lt;- data %&gt;% filter(birth_year &gt;
-2004) %&gt;% group_by(breed, birth_year) %&gt;% summarise(animal_count =
-n(), .groups = “drop”) %&gt;% filter(animal_count &gt; 40)</p>
-<p>head(animal_count_by_breed_year) %&gt;% kable()</p>
-<p>ggplot(animal_count_by_breed_year, aes(x = birth_year, y =
-animal_count, colour = breed)) + geom_line(linewidth = 1) + geom_point()
-+ theme_minimal() + labs( title = “Number of animals by breed and birth
-year”, x = “Birth year”, y = “Animal count” )</p>
-<p>if (!is.null(params<span class="math inline">\(img_geno_by_year)
-&amp;&amp;  file.exists(params\)</span>img_geno_by_year)) {</p>
-<p>knitr::include_graphics(params$img_geno_by_year)</p>
-<p>} else { cat(“No external image provided.”) }</p>
+<p>suppressPackageStartupMessages({ library(magrittr) library(dplyr)
+library(data.table) library(reshape2) library(ggplot2) library(tidyr)
+library(knitr) library(flextable) library(kableExtra) library(gridExtra)
+library(ggforce) library(haven) library(scales) })</p>
+<div id="windows-only-safe-on-linuxhpc" class="section level1">
+<h1>Windows-only; safe on Linux/HPC</h1>
+<p>if (.Platform$OS.type == “windows”) memory.limit(size = 8000)</p>
+</div>
+<div id="page-break-helper-html-gets-a-div-pdf-gets--" class="section level1">
+<h1>—- Page break helper: HTML gets a div, PDF gets —-</h1>
+page_break &lt;- function() { if (knitr::is_latex_output()) {
+cat(“\newpage”) } else { cat(’
+<div style="page-break-after: always;">
+
+</div>
+<p>’) } }</p>
+</div>
+<div id="paths-adjust-only-these-if-needed--" class="section level1">
+<h1>—- Paths (adjust only these if needed) —-</h1>
+<p>fn_results_primary &lt;- “../results_primary.RData” # adjust if
+needed fn_dat02_rdata &lt;- “dat02.RData” # adjust if needed</p>
+<p>fn_prev_sas &lt;-
+“../../../Previous/GENO/datasets/filtered_genotyped_animals.sas7bdat”
+fn_curr_sas &lt;-
+“../../GENO/datasets/filtered_genotyped_animals.sas7bdat”</p>
+<p>load(fn_results_primary) # creates results_primary
+setDT(results_primary)</p>
+<p>brdl &lt;- c(“AAN”,“CHA”,“HER”,“LIM”,“SIM”)</p>
+<p>all.trt &lt;-
+c(‘mbw1’,‘dbw1’,‘mcae1’,‘dcae1’,‘msb1’,‘dsb1’,‘mbw2’,‘dbw2’,‘mcae2’,‘dcae2’,‘msb2’,‘dsb2’,
+‘cal’,‘bir’,‘dam’,‘mbwtI’,‘mcaeI’,‘msbI’,‘dbwtI’,‘dcaeI’,‘dsbI’,
+‘mbw’,‘dbw’,‘mwg’,‘dwg’,‘myw’,‘dyw’,‘pwg’,‘sdg’,‘cco’,‘cfa’,‘gro’,‘slq’,‘pro’)</p>
+<p>all.clv &lt;-
+c(‘mbw1’,‘dbw1’,‘mcae1’,‘dcae1’,‘msb1’,‘dsb1’,‘mbw2’,‘dbw2’,‘mcae2’,‘dcae2’,‘msb2’,‘dsb2’,
+‘cal’,‘bir’,‘dam’,‘mbwtI’,‘mcaeI’,‘msbI’,‘dbwtI’,‘dcaeI’,‘dsbI’)</p>
+<p>all.crc &lt;-
+c(‘mbw’,‘dbw’,‘mwg’,‘dwg’,‘myw’,‘dyw’,‘pwg’,‘sdg’,‘cco’,‘cfa’,‘gro’,‘slq’,‘pro’)</p>
+<p>all.idx &lt;- c(‘cal’,‘bir’,‘dam’,‘gro’,‘slq’,‘pro’) all.idx.clv
+&lt;- c(‘cal’,‘bir’,‘dam’) all.idx.crc &lt;- c(‘gro’,‘slq’,‘pro’)</p>
+<p>abbr.names &lt;- read.table(header=TRUE, text=” trait Trait_name mbw
+‘Birth weight - maternal’ dbw ‘Birth weight - direct’ mbw1 ‘Birth weight
+- maternal, 1st. calv.’ mbw2 ‘Birth weight - maternal, 2+ calv.’ dbw1
+‘Birth weight - direct, 1st. calv.’ dbw2 ‘Birth weight - direct, 2+
+calv.’ mcae1 ‘Calving ease - maternal, 1st. calv.’ mcae2 ‘Calving ease -
+maternal, 2+ calv.’ dcae1 ‘Calving ease - direct, 1st. calv.’ dcae2
+‘Calving ease - direct, 2+ calv.’ msb1 ‘Calf survival - maternal, 1st.
+calv.’ msb2 ‘Calf survival - maternal, 2+ calv.’ dsb1 ‘Calf survival -
+direct, 1st. calv.’ dsb2 ‘Calf survival - direct, 2+ calv.’ mwg ‘Weaning
+weight gain - maternal’ dwg ‘Weaning weight gain - direct’ myw ‘Yearling
+weight - maternal’ dyw ‘Yearling weight - direct’ pwg ‘Post-weaning
+weight gain’ sdg ‘Carcass daily gain’ cco ‘Carcass conformation score’
+cfa ‘Carcass fat score’ cal ‘Calving index’ bir ‘Birth index’ dam ‘Dam
+index’ gro ‘Growth index’ slq ‘Slaughter quality index’ pro ‘Production
+index’ “)</p>
+<p>breed_colors &lt;- c( “AAN” = “#264653”, “CHA” = “#2A9D8F”, “HER” =
+“#E9C46A”, “LIM” = “#F4A261”, “SIM” = “#E76F51” )</p>
+</div>
 
 
 
