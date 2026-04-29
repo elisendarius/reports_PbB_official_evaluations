@@ -2,52 +2,287 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Repository of results from the PbB official evaluations</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PbB Official Evaluations – Repository of Results</title>
 <style>
+    * { box-sizing: border-box; }
     body {
-        font-family: Arial, sans-serif;
-        margin: 60px;
-        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+        background-color: #f4f6f8;
+        color: #2c3e50;
+        line-height: 1.5;
     }
-    h1 {
-        text-align: center;
-        margin-bottom: 40px;
+
+    /* Header */
+    header {
+        background: #ffffff;
+        border-bottom: 3px solid #1f4e79;
+        padding: 20px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    ul {
-        list-style-type: none;
-        padding: 0;
-        max-width: 600px;
-        margin: auto;
+    header .brand {
+        display: flex;
+        align-items: center;
+        gap: 20px;
     }
-    li {
-        margin: 15px 0;
-        padding: 15px;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        font-size: 18px;
+    header img.logo {
+        height: 60px;
+        width: auto;
     }
-    a {
+    header h1 {
+        font-size: 20px;
+        margin: 0;
+        color: #1f4e79;
+    }
+    header nav a {
+        margin-left: 20px;
         text-decoration: none;
         color: #1f4e79;
-        font-weight: bold;
+        font-weight: 600;
+        font-size: 15px;
     }
-    a:hover {
-        color: #d62828;
+    header nav a:hover { color: #d62828; }
+
+    /* Layout */
+    main {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
     }
+    @media (max-width: 800px) {
+        main { grid-template-columns: 1fr; }
+    }
+
+    section.card {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 25px 30px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    section.card h2 {
+        margin-top: 0;
+        color: #1f4e79;
+        border-bottom: 2px solid #e6ecf2;
+        padding-bottom: 10px;
+        font-size: 20px;
+    }
+
+    /* Reports list */
+    ul.reports {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    ul.reports li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        margin: 10px 0;
+        background: #f8fafc;
+        border-left: 4px solid #1f4e79;
+        border-radius: 6px;
+        transition: background 0.2s ease;
+    }
+    ul.reports li:hover { background: #eef3f8; }
+    ul.reports a {
+        text-decoration: none;
+        color: #1f4e79;
+        font-weight: 600;
+        font-size: 16px;
+    }
+    ul.reports a:hover { color: #d62828; }
+    .badge {
+        font-size: 12px;
+        padding: 3px 10px;
+        border-radius: 12px;
+        background: #e3eaf2;
+        color: #1f4e79;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .badge.latest {
+        background: #d62828;
+        color: #ffffff;
+    }
+    .file-type {
+        font-size: 12px;
+        color: #6b7c8c;
+        margin-left: 8px;
+    }
+
+    /* Sidebar */
+    .sidebar .card + .card { margin-top: 20px; }
+    .sidebar a.btn {
+        display: block;
+        background: #1f4e79;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 10px;
+        transition: background 0.2s ease;
+    }
+    .sidebar a.btn:hover { background: #163a5c; }
+    .sidebar a.btn.alt { background: #2e7d32; }
+    .sidebar a.btn.alt:hover { background: #225a25; }
+
+    .news-item {
+        padding: 10px 0;
+        border-bottom: 1px solid #eef0f2;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-item a {
+        text-decoration: none;
+        color: #1f4e79;
+        font-weight: 600;
+        display: block;
+    }
+    .news-item a:hover { color: #d62828; }
+    .news-date {
+        font-size: 12px;
+        color: #6b7c8c;
+        margin-top: 3px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        font-size: 13px;
+        color: #6b7c8c;
+        border-top: 1px solid #e6ecf2;
+        margin-top: 40px;
+        background: #ffffff;
+    }
+    footer a { color: #1f4e79; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 </style>
 </head>
-
 <body>
 
-<h1>Repository of results from the PbB official evaluations</h1>
+<header>
+    <div class="brand">
+        <a href="https://nordicebv.info/" target="_blank" rel="noopener">
+            <img class="logo" src="https://nordicebv.info/wp-content/uploads/2020/09/nav-logo.png" alt="NAV – Nordic Cattle Genetic Evaluation">
+        </a>
+        <h1>Purebred Beef (PbB) Official Evaluations<br><span style="font-weight:400; font-size:14px; color:#6b7c8c;">Repository of results</span></h1>
+    </div>
+    <nav>
+        <a href="https://nordicebv.info/beef-cattle/beef-publication/" target="_blank" rel="noopener">About PbB Evaluation</a>
+        <a href="https://nordic.mloy.fi/NAVBeef/" target="_blank" rel="noopener">NAV Beef Search &#8599;</a>
+    </nav>
+</header>
 
-<ul>
-    <li><a href="Run-2025-11/report.html">Run-2025-11</a></li>
-    <li><a href="Run-2026-03/report.html">Run-2026-03</a></li>
-    <li><a href="Run-2026-04/results_April_2026r_NAVPbB.pdf">Run-2026-04</a></li>
-    <li><a href="Run-2026-05/report.html">Run-2026-05</a></li>
-</ul>
+<main>
+
+    <!-- Reports list -->
+    <section class="card">
+        <h2>Evaluation Runs</h2>
+        <p style="margin-top:0; color:#54616d;">
+            Below are the official PbB (Purebred Beef) evaluation reports. Click a run to open the full report.
+            Published breeding values are also available on
+            <a href="https://nordic.mloy.fi/NAVBeef/" target="_blank" rel="noopener" style="color:#1f4e79; font-weight:600;">NAV Beef Search</a>.
+        </p>
+
+        <ul class="reports">
+            <li>
+                <span>
+                    <a href="Run-2026-05/report.html">Run 2026-05</a>
+                    <span class="file-type">(HTML report)</span>
+                </span>
+                <span class="badge latest">Latest</span>
+            </li>
+            <li>
+                <span>
+                    <a href="Run-2026-04/results_April_2026r_NAVPbB.pdf">Run 2026-04</a>
+                    <span class="file-type">(PDF)</span>
+                </span>
+                <span class="badge">April 2026</span>
+            </li>
+            <li>
+                <span>
+                    <a href="Run-2026-03/report.html">Run 2026-03</a>
+                    <span class="file-type">(HTML report)</span>
+                </span>
+                <span class="badge">March 2026</span>
+            </li>
+            <li>
+                <span>
+                    <a href="Run-2025-11/report.html">Run 2025-11</a>
+                    <span class="file-type">(HTML report)</span>
+                </span>
+                <span class="badge">Nov 2025</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <section class="card">
+            <h2>Quick links</h2>
+            <a class="btn" href="https://nordic.mloy.fi/NAVBeef/" target="_blank" rel="noopener">
+                NAV Beef Search
+            </a>
+            <a class="btn alt" href="https://nordic.mloy.fi/NAVTrends/beef" target="_blank" rel="noopener">
+                NAV Beef Trends
+            </a>
+            <a class="btn" href="https://nordicebv.info/beef-cattle/beef-publication/" target="_blank" rel="noopener" style="background:#54616d;">
+                Beef publication info
+            </a>
+        </section>
+
+        <section class="card">
+            <h2>Latest News &ndash; Purebred Beef</h2>
+
+            <div class="news-item">
+                <a href="https://nordicebv.info/nav-beef-evaluation-8/" target="_blank" rel="noopener">
+                    NAV Beef Evaluation
+                </a>
+                <div class="news-date">14 April 2026 &middot; Latest PbB release</div>
+            </div>
+
+            <div class="news-item">
+                <a href="https://nordicebv.info/nav-genomic-evaluation-and-nav-beef-evaluation-9/" target="_blank" rel="noopener">
+                    NAV Genomic Evaluation &amp; NAV Beef Evaluation
+                </a>
+                <div class="news-date">03 March 2026</div>
+            </div>
+
+            <div class="news-item">
+                <a href="https://nordicebv.info/nav-evaluation/" target="_blank" rel="noopener">
+                    NAV Evaluation &amp; NAV Beef Evaluation
+                </a>
+                <div class="news-date">04 November 2025</div>
+            </div>
+
+            <div class="news-item">
+                <a href="https://nordicebv.info/news/" target="_blank" rel="noopener" style="font-size:14px;">
+                    &rarr; All NAV news
+                </a>
+            </div>
+        </section>
+
+    </aside>
+
+</main>
+
+<footer>
+    Repository of PbB official evaluation results &middot;
+    Powered by <a href="https://nordicebv.info/" target="_blank" rel="noopener">NAV &ndash; Nordic Cattle Genetic Evaluation</a>
+    (Denmark &middot; Finland &middot; Sweden)
+</footer>
 
 </body>
 </html>
