@@ -76,6 +76,68 @@
         font-size: 20px;
     }
 
+    /* Year groups */
+    .year-group {
+        margin-top: 20px;
+    }
+    .year-group h3 {
+        font-size: 16px;
+        color: #1f4e79;
+        margin: 0 0 10px 0;
+        padding-bottom: 6px;
+        border-bottom: 1px dashed #d0dae5;
+        letter-spacing: 0.3px;
+    }
+    .year-group h3 .count {
+        font-size: 12px;
+        color: #6b7c8c;
+        font-weight: 400;
+        margin-left: 6px;
+    }
+
+    /* Collapsible past years */
+    details.past-year {
+        margin-top: 20px;
+        background: #f8fafc;
+        border: 1px solid #e6ecf2;
+        border-radius: 8px;
+        padding: 0;
+    }
+    details.past-year > summary {
+        cursor: pointer;
+        padding: 12px 18px;
+        font-weight: 600;
+        color: #1f4e79;
+        font-size: 15px;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        user-select: none;
+    }
+    details.past-year > summary::-webkit-details-marker { display: none; }
+    details.past-year > summary::before {
+        content: "▸";
+        margin-right: 10px;
+        transition: transform 0.2s ease;
+        color: #1f4e79;
+        display: inline-block;
+    }
+    details.past-year[open] > summary::before {
+        transform: rotate(90deg);
+    }
+    details.past-year > summary:hover { color: #d62828; }
+    details.past-year[open] > summary {
+        border-bottom: 1px solid #e6ecf2;
+    }
+    details.past-year > .year-group {
+        margin: 0;
+        padding: 16px 20px 8px 20px;
+    }
+    details.past-year > .year-group h3 {
+        display: none; /* year already shown in summary */
+    }
+
     /* Reports list */
     ul.reports {
         list-style: none;
@@ -93,6 +155,9 @@
         border-radius: 6px;
         transition: background 0.2s ease;
     }
+    details.past-year ul.reports li {
+        background: #ffffff;
+    }
     ul.reports li:hover { background: #eef3f8; }
     ul.reports a {
         text-decoration: none;
@@ -109,6 +174,7 @@
         color: #1f4e79;
         text-transform: uppercase;
         letter-spacing: 0.5px;
+        white-space: nowrap;
     }
     .badge.latest {
         background: #d62828;
@@ -190,41 +256,59 @@
     <section class="card">
         <h2>Evaluation Runs</h2>
         <p style="margin-top:0; color:#54616d;">
-            Below are the official PbB (Purebred Beef) evaluation reports. Click a run to open the full report.
+            Below are the official PbB (Purebred Beef) evaluation reports, grouped by year.
             Published breeding values are also available on
             <a href="https://nordic.mloy.fi/NAVBeef/" target="_blank" rel="noopener" style="color:#1f4e79; font-weight:600;">NAV Beef Search</a>.
         </p>
 
-        <ul class="reports">
-            <li>
-                <span>
-                    <a href="Run-2026-05/report.html">Run 2026-05</a>
-                    <span class="file-type">(HTML report)</span>
-                </span>
-                <span class="badge latest">Latest</span>
-            </li>
-            <li>
-                <span>
-                    <a href="Run-2026-04/results_April_2026r_NAVPbB.pdf">Run 2026-04</a>
-                    <span class="file-type">(PDF)</span>
-                </span>
-                <span class="badge">April 2026</span>
-            </li>
-            <li>
-                <span>
-                    <a href="Run-2026-03/report.html">Run 2026-03</a>
-                    <span class="file-type">(HTML report)</span>
-                </span>
-                <span class="badge">March 2026</span>
-            </li>
-            <li>
-                <span>
-                    <a href="Run-2025-11/report.html">Run 2025-11</a>
-                    <span class="file-type">(HTML report)</span>
-                </span>
-                <span class="badge">Nov 2025</span>
-            </li>
-        </ul>
+        <!-- Current year: 2026 (expanded) -->
+        <div class="year-group">
+            <h3>2026 <span class="count">– current year</span></h3>
+            <ul class="reports">
+                <li>
+                    <span>
+                        <a href="Run-2026-05/report.html">Run 2026-05</a>
+                        <span class="file-type">(HTML report)</span>
+                    </span>
+                    <span class="badge latest">Latest</span>
+                </li>
+                <li>
+                    <span>
+                        <a href="Run-2026-04/results_April_2026r_NAVPbB.pdf">Run 2026-04</a>
+                        <span class="file-type">(PDF)</span>
+                    </span>
+                    <span class="badge">April 2026</span>
+                </li>
+                <li>
+                    <span>
+                        <a href="Run-2026-03/report.html">Run 2026-03</a>
+                        <span class="file-type">(HTML report)</span>
+                    </span>
+                    <span class="badge">March 2026</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Past years: collapsed by default -->
+        <details class="past-year">
+            <summary>
+                <span>Run &ndash; 2025</span>
+                <span class="badge">1 report</span>
+            </summary>
+            <div class="year-group">
+                <h3>2025</h3>
+                <ul class="reports">
+                    <li>
+                        <span>
+                            <a href="Run-2025-11/report.html">Run 2025-11</a>
+                            <span class="file-type">(HTML report)</span>
+                        </span>
+                        <span class="badge">Nov 2025</span>
+                    </li>
+                </ul>
+            </div>
+        </details>
+
     </section>
 
     <!-- Sidebar -->
