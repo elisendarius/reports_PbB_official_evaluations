@@ -31,15 +31,8 @@
         align-items: center;
         gap: 20px;
     }
-    header img.logo {
-        height: 60px;
-        width: auto;
-    }
-    header h1 {
-        font-size: 20px;
-        margin: 0;
-        color: #1f4e79;
-    }
+    header img.logo { height: 60px; width: auto; }
+    header h1 { font-size: 20px; margin: 0; color: #1f4e79; }
     header nav a {
         margin-left: 20px;
         text-decoration: none;
@@ -77,9 +70,7 @@
     }
 
     /* Year groups */
-    .year-group {
-        margin-top: 20px;
-    }
+    .year-group { margin-top: 20px; }
     .year-group h3 {
         font-size: 16px;
         color: #1f4e79;
@@ -101,7 +92,6 @@
         background: #f8fafc;
         border: 1px solid #e6ecf2;
         border-radius: 8px;
-        padding: 0;
     }
     details.past-year > summary {
         cursor: pointer;
@@ -123,27 +113,14 @@
         color: #1f4e79;
         display: inline-block;
     }
-    details.past-year[open] > summary::before {
-        transform: rotate(90deg);
-    }
+    details.past-year[open] > summary::before { transform: rotate(90deg); }
     details.past-year > summary:hover { color: #d62828; }
-    details.past-year[open] > summary {
-        border-bottom: 1px solid #e6ecf2;
-    }
-    details.past-year > .year-group {
-        margin: 0;
-        padding: 16px 20px 8px 20px;
-    }
-    details.past-year > .year-group h3 {
-        display: none; /* year already shown in summary */
-    }
+    details.past-year[open] > summary { border-bottom: 1px solid #e6ecf2; }
+    details.past-year > .year-group { margin: 0; padding: 16px 20px 8px 20px; }
+    details.past-year > .year-group h3 { display: none; }
 
     /* Reports list */
-    ul.reports {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+    ul.reports { list-style: none; padding: 0; margin: 0; }
     ul.reports li {
         display: flex;
         justify-content: space-between;
@@ -155,9 +132,7 @@
         border-radius: 6px;
         transition: background 0.2s ease;
     }
-    details.past-year ul.reports li {
-        background: #ffffff;
-    }
+    details.past-year ul.reports li { background: #ffffff; }
     ul.reports li:hover { background: #eef3f8; }
     ul.reports a {
         text-decoration: none;
@@ -176,14 +151,22 @@
         letter-spacing: 0.5px;
         white-space: nowrap;
     }
-    .badge.latest {
-        background: #d62828;
-        color: #ffffff;
-    }
-    .file-type {
-        font-size: 12px;
+    .badge.latest { background: #d62828; color: #ffffff; }
+    .file-type { font-size: 12px; color: #6b7c8c; margin-left: 8px; }
+
+    /* Loading / error states */
+    .status-msg {
+        padding: 18px;
+        text-align: center;
         color: #6b7c8c;
-        margin-left: 8px;
+        font-style: italic;
+    }
+    .status-msg.error {
+        color: #b00020;
+        background: #fdecea;
+        border-radius: 6px;
+        font-style: normal;
+        font-weight: 500;
     }
 
     /* Sidebar */
@@ -216,11 +199,7 @@
         display: block;
     }
     .news-item a:hover { color: #d62828; }
-    .news-date {
-        font-size: 12px;
-        color: #6b7c8c;
-        margin-top: 3px;
-    }
+    .news-date { font-size: 12px; color: #6b7c8c; margin-top: 3px; }
 
     footer {
         text-align: center;
@@ -252,7 +231,7 @@
 
 <main>
 
-    <!-- Reports list -->
+    <!-- Reports list (rendered dynamically from runs.json) -->
     <section class="card">
         <h2>Evaluation Runs</h2>
         <p style="margin-top:0; color:#54616d;">
@@ -261,54 +240,9 @@
             <a href="https://nordic.mloy.fi/NAVBeef/" target="_blank" rel="noopener" style="color:#1f4e79; font-weight:600;">NAV Beef Search</a>.
         </p>
 
-        <!-- Current year: 2026 (expanded) -->
-        <div class="year-group">
-            <h3>2026 <span class="count">– current year</span></h3>
-            <ul class="reports">
-                <li>
-                    <span>
-                        <a href="Run-2026-05/report.html">Run 2026-05</a>
-                        <span class="file-type">(HTML report)</span>
-                    </span>
-                    <span class="badge latest">Latest</span>
-                </li>
-                <li>
-                    <span>
-                        <a href="Run-2026-04/results_April_2026r_NAVPbB.pdf">Run 2026-04</a>
-                        <span class="file-type">(PDF)</span>
-                    </span>
-                    <span class="badge">April 2026</span>
-                </li>
-                <li>
-                    <span>
-                        <a href="Run-2026-03/report.html">Run 2026-03</a>
-                        <span class="file-type">(HTML report)</span>
-                    </span>
-                    <span class="badge">March 2026</span>
-                </li>
-            </ul>
+        <div id="runs-container">
+            <div class="status-msg">Loading runs…</div>
         </div>
-
-        <!-- Past years: collapsed by default -->
-        <details class="past-year">
-            <summary>
-                <span>Run &ndash; 2025</span>
-                <span class="badge">1 report</span>
-            </summary>
-            <div class="year-group">
-                <h3>2025</h3>
-                <ul class="reports">
-                    <li>
-                        <span>
-                            <a href="Run-2025-11/report.html">Run 2025-11</a>
-                            <span class="file-type">(HTML report)</span>
-                        </span>
-                        <span class="badge">Nov 2025</span>
-                    </li>
-                </ul>
-            </div>
-        </details>
-
     </section>
 
     <!-- Sidebar -->
@@ -316,45 +250,31 @@
 
         <section class="card">
             <h2>Quick links</h2>
-            <a class="btn" href="https://nordic.mloy.fi/NAVBeef/" target="_blank" rel="noopener">
-                NAV Beef Search
-            </a>
-            <a class="btn alt" href="https://nordic.mloy.fi/NAVTrends/beef" target="_blank" rel="noopener">
-                NAV Beef Trends
-            </a>
-            <a class="btn" href="https://nordicebv.info/beef-cattle/beef-publication/" target="_blank" rel="noopener" style="background:#54616d;">
-                Beef publication info
-            </a>
+            <a class="btn" href="https://nordic.mloy.fi/NAVBeef/" target="_blank" rel="noopener">NAV Beef Search</a>
+            <a class="btn alt" href="https://nordic.mloy.fi/NAVTrends/beef" target="_blank" rel="noopener">NAV Beef Trends</a>
+            <a class="btn" href="https://nordicebv.info/beef-cattle/beef-publication/" target="_blank" rel="noopener" style="background:#54616d;">Beef publication info</a>
         </section>
 
         <section class="card">
             <h2>Latest News &ndash; Purebred Beef</h2>
 
             <div class="news-item">
-                <a href="https://nordicebv.info/nav-beef-evaluation-8/" target="_blank" rel="noopener">
-                    NAV Beef Evaluation
-                </a>
+                <a href="https://nordicebv.info/nav-beef-evaluation-8/" target="_blank" rel="noopener">NAV Beef Evaluation</a>
                 <div class="news-date">14 April 2026 &middot; Latest PbB release</div>
             </div>
 
             <div class="news-item">
-                <a href="https://nordicebv.info/nav-genomic-evaluation-and-nav-beef-evaluation-9/" target="_blank" rel="noopener">
-                    NAV Genomic Evaluation &amp; NAV Beef Evaluation
-                </a>
+                <a href="https://nordicebv.info/nav-genomic-evaluation-and-nav-beef-evaluation-9/" target="_blank" rel="noopener">NAV Genomic Evaluation &amp; NAV Beef Evaluation</a>
                 <div class="news-date">03 March 2026</div>
             </div>
 
             <div class="news-item">
-                <a href="https://nordicebv.info/nav-evaluation/" target="_blank" rel="noopener">
-                    NAV Evaluation &amp; NAV Beef Evaluation
-                </a>
+                <a href="https://nordicebv.info/nav-evaluation/" target="_blank" rel="noopener">NAV Evaluation &amp; NAV Beef Evaluation</a>
                 <div class="news-date">04 November 2025</div>
             </div>
 
             <div class="news-item">
-                <a href="https://nordicebv.info/news/" target="_blank" rel="noopener" style="font-size:14px;">
-                    &rarr; All NAV news
-                </a>
+                <a href="https://nordicebv.info/news/" target="_blank" rel="noopener" style="font-size:14px;">&rarr; All NAV news</a>
             </div>
         </section>
 
@@ -367,6 +287,152 @@
     Powered by <a href="https://nordicebv.info/" target="_blank" rel="noopener">NAV &ndash; Nordic Cattle Genetic Evaluation</a>
     (Denmark &middot; Finland &middot; Sweden)
 </footer>
+
+<script>
+// ---------------------------------------------------------------------------
+// Renders the list of runs from runs.json.
+// To add a new run, just edit runs.json — no need to touch this file.
+// ---------------------------------------------------------------------------
+
+const MONTH_NAMES = [
+    "", "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
+
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+function parseFolder(folder) {
+    // Expected format: "Run-YYYY-MM"
+    const m = /^Run-(\d{4})-(\d{1,2})$/i.exec(folder);
+    if (!m) return null;
+    const year = parseInt(m[1], 10);
+    const month = parseInt(m[2], 10);
+    return { year, month };
+}
+
+function fileTypeLabel(file) {
+    const lower = (file || "").toLowerCase();
+    if (lower.endsWith(".pdf")) return "PDF";
+    if (lower.endsWith(".html") || lower.endsWith(".htm")) return "HTML report";
+    return file.split(".").pop().toUpperCase();
+}
+
+function buildRunItem(run, isLatest) {
+    const parsed = parseFolder(run.folder);
+    if (!parsed) return ""; // skip malformed entries silently
+
+    const href = encodeURI(run.folder + "/" + run.file);
+    const label = "Run " + run.folder.replace(/^Run-/, "");
+    const type = fileTypeLabel(run.file);
+
+    let badge;
+    if (isLatest) {
+        badge = '<span class="badge latest">Latest</span>';
+    } else {
+        const monthName = MONTH_NAMES[parsed.month] || ("Month " + parsed.month);
+        badge = '<span class="badge">' + escapeHtml(monthName) + ' ' + parsed.year + '</span>';
+    }
+
+    return (
+        '<li>' +
+            '<span>' +
+                '<a href="' + escapeHtml(href) + '">' + escapeHtml(label) + '</a>' +
+                '<span class="file-type">(' + escapeHtml(type) + ')</span>' +
+            '</span>' +
+            badge +
+        '</li>'
+    );
+}
+
+function render(runs) {
+    const container = document.getElementById("runs-container");
+
+    // Filter + parse + sort newest first
+    const valid = runs
+        .map(r => ({ ...r, _parsed: parseFolder(r.folder) }))
+        .filter(r => r._parsed)
+        .sort((a, b) => {
+            if (b._parsed.year !== a._parsed.year) return b._parsed.year - a._parsed.year;
+            return b._parsed.month - a._parsed.month;
+        });
+
+    if (valid.length === 0) {
+        container.innerHTML = '<div class="status-msg error">No valid runs found in runs.json. Entries must use the format "Run-YYYY-MM".</div>';
+        return;
+    }
+
+    // Group by year
+    const byYear = {};
+    valid.forEach(r => {
+        const y = r._parsed.year;
+        if (!byYear[y]) byYear[y] = [];
+        byYear[y].push(r);
+    });
+
+    const years = Object.keys(byYear).map(Number).sort((a, b) => b - a);
+    const currentYear = years[0]; // most recent year shown becomes "current"
+    const latestFolder = valid[0].folder;
+
+    let html = "";
+
+    years.forEach(year => {
+        const items = byYear[year]
+            .map(r => buildRunItem(r, r.folder === latestFolder))
+            .join("");
+
+        if (year === currentYear) {
+            // Expanded
+            html += (
+                '<div class="year-group">' +
+                    '<h3>' + year + ' <span class="count">&ndash; current year</span></h3>' +
+                    '<ul class="reports">' + items + '</ul>' +
+                '</div>'
+            );
+        } else {
+            // Collapsed
+            const count = byYear[year].length;
+            const countLabel = count + (count === 1 ? ' report' : ' reports');
+            html += (
+                '<details class="past-year">' +
+                    '<summary>' +
+                        '<span>Run &ndash; ' + year + '</span>' +
+                        '<span class="badge">' + countLabel + '</span>' +
+                    '</summary>' +
+                    '<div class="year-group">' +
+                        '<h3>' + year + '</h3>' +
+                        '<ul class="reports">' + items + '</ul>' +
+                    '</div>' +
+                '</details>'
+            );
+        }
+    });
+
+    container.innerHTML = html;
+}
+
+fetch("runs.json", { cache: "no-store" })
+    .then(res => {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+    })
+    .then(data => {
+        const runs = Array.isArray(data) ? data : (data.runs || []);
+        render(runs);
+    })
+    .catch(err => {
+        document.getElementById("runs-container").innerHTML =
+            '<div class="status-msg error">Could not load runs.json (' + escapeHtml(err.message) + '). ' +
+            'Make sure runs.json is in the same folder as this page and the site is served over http(s).</div>';
+        console.error("Failed to load runs.json:", err);
+    });
+</script>
 
 </body>
 </html>

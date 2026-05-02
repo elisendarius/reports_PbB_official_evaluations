@@ -1,0 +1,22 @@
+{
+  "_comment": "To add a new run: copy one of the entries below, change the values, and save the file. The page will pick it up automatically. The 'folder' must match the directory name on disk exactly.",
+
+  "runs": [
+    {
+      "folder": "Run-2026-05",
+      "file":   "report.html"
+    },
+    {
+      "folder": "Run-2026-04",
+      "file":   "results_April_2026r_NAVPbB.pdf"
+    },
+    {
+      "folder": "Run-2026-03",
+      "file":   "report.html"
+    },
+    {
+      "folder": "Run-2025-11",
+      "file":   "report.html"
+    }
+  ]
+}
