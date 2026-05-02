@@ -4,7 +4,7 @@
   "runs": [
     {
       "folder": "Run-2026-05",
-      "file":   "report.html"
+      "file":   "results_May_2026r_NAVPbB.pdf"
     },
     {
       "folder": "Run-2026-04",
@@ -12,11 +12,11 @@
     },
     {
       "folder": "Run-2026-03",
-      "file":   "report.html"
+      "file":   "results_March_2026r_NAVPbB.pdf"
     },
     {
       "folder": "Run-2025-11",
-      "file":   "report.html"
+      "file":   "results_November_2026r_NAVPbB.pdf"
     }
   ]
 }
